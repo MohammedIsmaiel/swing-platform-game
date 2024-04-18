@@ -2,6 +2,9 @@ package com.tobeupdated.app.ui;
 
 import javax.swing.JFrame;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
+
 public class GameWindow {
     public GameWindow(GamePanel panel) {
         JFrame frame = new JFrame("Simple Java game");
@@ -11,5 +14,19 @@ public class GameWindow {
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
+        frame.addWindowFocusListener(new WindowFocusListener() {
+            @Override
+            public void windowGainedFocus(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowLostFocus(WindowEvent e) {
+                panel.getPlayer().setUp(false);
+                panel.getPlayer().setDown(false);
+                panel.getPlayer().setRight(false);
+                panel.getPlayer().setLeft(false);
+            }
+        });
     }
 }
