@@ -26,6 +26,17 @@ public class Player extends Entity {
         loadAnimations();
     }
 
+    public void update() {
+        movePlayer();
+        updatePlayerAction();
+        runAnimation();
+
+    }
+
+    public void render(Graphics g) {
+        g.drawImage(animation[playerAction.getId()][animationIndex], x, y, 128, 80, null);
+    }
+
     public boolean isUp() {
         return up;
     }
@@ -88,17 +99,16 @@ public class Player extends Entity {
         boolean isPlayerMoving = false; // Initialize the movement flag
 
         // Check each direction and move accordingly
-        // if (up) {
-        // y -= playerSpeed;
-        // isPlayerMoving = true;
-        // } else if (down) {
-        // y += playerSpeed;
-        // isPlayerMoving = true;
-        // } else if (right) {
-        // x += playerSpeed;
-        // isPlayerMoving = true;
-        // } else
-        if (left) {
+        if (up) {
+            y -= playerSpeed;
+            isPlayerMoving = true;
+        } else if (down) {
+            y += playerSpeed;
+            isPlayerMoving = true;
+        } else if (right) {
+            x += playerSpeed;
+            isPlayerMoving = true;
+        } else if (left) {
             x -= playerSpeed;
             isPlayerMoving = true;
         }
@@ -123,16 +133,5 @@ public class Player extends Entity {
                 animationIndex = 0;
             }
         }
-    }
-
-    public void update() {
-        movePlayer();
-        updatePlayerAction();
-        runAnimation();
-
-    }
-
-    public void render(Graphics g) {
-        g.drawImage(animation[playerAction.getId()][animationIndex], x, y, 128, 80, null);
     }
 }
