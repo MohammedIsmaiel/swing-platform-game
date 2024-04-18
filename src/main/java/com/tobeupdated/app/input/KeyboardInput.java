@@ -21,13 +21,13 @@ public class KeyboardInput implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                gamePanel.getGame().getPlayer().setUp(true);
+                gamePanel.getPlayer().setUp(true);
             case KeyEvent.VK_S:
-                gamePanel.getGame().getPlayer().setDown(true);
+                gamePanel.getPlayer().setDown(true);
             case KeyEvent.VK_A:
-                gamePanel.getGame().getPlayer().setLeft(true);
+                gamePanel.getPlayer().setLeft(true);
             case KeyEvent.VK_D:
-                gamePanel.getGame().getPlayer().setRight(true);
+                gamePanel.getPlayer().setRight(true);
                 break;
             case KeyEvent.VK_SPACE:
                 System.out.println("space");
@@ -43,18 +43,19 @@ public class KeyboardInput implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                gamePanel.getGame().getPlayer().setUp(false);
+                gamePanel.getPlayer().setUp(false);
             case KeyEvent.VK_S:
-                gamePanel.getGame().getPlayer().setDown(false);
+                gamePanel.getPlayer().setDown(false);
             case KeyEvent.VK_A:
-                gamePanel.getGame().getPlayer().setLeft(false);
+                gamePanel.getPlayer().setLeft(false);
             case KeyEvent.VK_D:
-                gamePanel.getGame().getPlayer().setRight(false);
+                gamePanel.getPlayer().setRight(false);
                 break;
             case KeyEvent.VK_SPACE:
                 System.out.println("space");
                 break;
             default:
+                // Handle other key presses if needed
                 System.out.println("not valid");
                 break;
         }

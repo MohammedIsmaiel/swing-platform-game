@@ -88,17 +88,17 @@ public class Player extends Entity {
         boolean isPlayerMoving = false; // Initialize the movement flag
 
         // Check each direction and move accordingly
-        if (up && !down) {
-            y -= playerSpeed;
-            isPlayerMoving = true;
-        } else if (down && !up) {
-            y += playerSpeed;
-            isPlayerMoving = true;
-        }
-        if (right && !left) {
-            x += playerSpeed;
-            isPlayerMoving = true;
-        } else if (left && !right) {
+        // if (up) {
+        // y -= playerSpeed;
+        // isPlayerMoving = true;
+        // } else if (down) {
+        // y += playerSpeed;
+        // isPlayerMoving = true;
+        // } else if (right) {
+        // x += playerSpeed;
+        // isPlayerMoving = true;
+        // } else
+        if (left) {
             x -= playerSpeed;
             isPlayerMoving = true;
         }

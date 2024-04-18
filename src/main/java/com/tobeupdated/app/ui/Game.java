@@ -13,11 +13,9 @@ public class Game {
     private final long TARGET_TIME = 1000 / FPS;
     private int frameCount = 0;
     private long totalTime = 0;
-    private Player player;
 
     public Game() {
-        gamePanel = new GamePanel(this);
-        player = new Player(100, 100);
+        gamePanel = new GamePanel();
         new GameWindow(gamePanel);
         gamePanel.requestFocus();
 
@@ -25,7 +23,7 @@ public class Game {
             long startFrameTime = System.currentTimeMillis();
 
             // Update game state
-            update();
+            gamePanel.update();
             // Render game state
             gamePanel.repaint();
 
@@ -57,10 +55,6 @@ public class Game {
         });
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
     public void start() {
         timer.setDelay((int) TARGET_TIME);
         timer.start();
@@ -70,11 +64,10 @@ public class Game {
         timer.stop();
     }
 
-    public void update() {
-        player.update();
-    }
+    // public void update() {
+    // player.update();
+    // }
 
     public void render(Graphics g) {
-        player.render(g);
     }
 }

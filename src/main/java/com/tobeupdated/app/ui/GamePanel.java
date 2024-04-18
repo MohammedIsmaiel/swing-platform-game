@@ -7,14 +7,15 @@ import javax.swing.JPanel;
 
 import com.tobeupdated.app.input.KeyboardInput;
 import com.tobeupdated.app.input.MouseInput;
+import com.tobeupdated.app.model.Player;
 
 public class GamePanel extends JPanel {
     private final Dimension panelDimension;
-    private Game game;
+    private Player player;
 
-    public GamePanel(Game game) {
+    public GamePanel() {
         panelDimension = new Dimension(1280, 800);
-        this.game = game;
+        player = new Player(100, 100);
         setMaximumSize(panelDimension);
         setMinimumSize(panelDimension);
         setPreferredSize(panelDimension);
@@ -22,17 +23,17 @@ public class GamePanel extends JPanel {
         addMouseMotionListener(new MouseInput(this));
     }
 
-    public Game getGame() {
-        return game;
-    }
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        game.render(g);
+        player.render(g);
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public void update() {
-        game.update();
+        player.update();
     }
 
 }
