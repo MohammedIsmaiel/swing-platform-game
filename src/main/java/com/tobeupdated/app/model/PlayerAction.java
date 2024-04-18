@@ -3,13 +3,13 @@ package com.tobeupdated.app.model;
 public enum PlayerAction {
     IDLE(0, 5),
     RUNNING(1, 6),
-    HIT(2, 4),
-    JUMP(3, 3),
-    ATTACK(4, 3),
-    ATTACK_JUMP_1(5, 3),
-    ATTACK_JUMP_2(6, 3),
-    GROUNDED(7, 2),
-    FALLING(8, 1);
+    JUMP(2, 3),
+    FALLING(3, 1),
+    GROUNDED(4, 2),
+    HIT(5, 4),
+    ATTACK(6, 3),
+    ATTACK_JUMP_1(7, 3),
+    ATTACK_JUMP_2(8, 3);
 
     private final int id;
     private final int animationLength;
