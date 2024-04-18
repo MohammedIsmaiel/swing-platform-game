@@ -2,10 +2,8 @@ package com.tobeupdated.app.model;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 
-import javax.imageio.ImageIO;
+import com.tobeupdated.app.util.LoadSave;
 
 /**
  * Player
@@ -15,7 +13,7 @@ public class Player extends Entity {
     private BufferedImage[][] animation;
     private PlayerAction playerAction;
 
-    private boolean isPlayerMoving, up, down, right, left;
+    private boolean isPlayerMoving, up, down, right, left, attacking;
 
     private int animationPulse, animationSpeed = 8, animationIndex, playerSpeed = 10;
 
@@ -74,23 +72,12 @@ public class Player extends Entity {
     }
 
     private void loadAnimations() {
-        InputStream inputStream = getClass().getResourceAsStream("/player_sprites.png");
-        try {
-            var playerSprite = ImageIO.read(inputStream);
-            animation = new BufferedImage[9][6];
-            for (int i = 0; i < animation.length; i++) {
-                for (int j = 0; j < animation[i].length; j++) {
-                    animation[i][j] = playerSprite.getSubimage(j * 64, i * 40, 64, 40);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("can't load player image");
-            e.printStackTrace();
-        } finally {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+
+        var playerSprite = LoadSave.loadAnimations(LoadSave.PLAYER_SPIRIT);
+        animation = new BufferedImage[9][6];
+        for (int i = 0; i < animation.length; i++) {
+            for (int j = 0; j < animation[i].length; j++) {
+                animation[i][j] = playerSprite.getSubimage(j * 64, i * 40, 64, 40);
             }
         }
     }
@@ -117,10 +104,22 @@ public class Player extends Entity {
     }
 
     private void updatePlayerAction() {
+        PlayerAction initAnimation = playerAction;
         if (isPlayerMoving) {
             playerAction = PlayerAction.RUNNING;
         } else
             playerAction = PlayerAction.IDLE;
+        if (attacking) {
+            playerAction = playerAction.ATTACK;
+        }
+        if (initAnimation != playerAction) {
+            resetAnimation();
+        }
+    }
+
+    void resetAnimation() {
+        animationIndex = 0;
+        animationPulse = 0;
     }
 
     private void runAnimation() {
@@ -130,7 +129,12 @@ public class Player extends Entity {
             animationIndex++;
             if (animationIndex >= playerAction.getAnimationLength()) {
                 animationIndex = 0;
+                attacking = false;
             }
         }
+    }
+
+    public void setAttacking(boolean attacking) {
+        this.attacking = attacking;
     }
 }
