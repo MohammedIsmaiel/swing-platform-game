@@ -8,8 +8,9 @@ import javax.imageio.ImageIO;
 
 public class LoadSave {
     public static final String PLAYER_SPIRIT = "/player_sprites.png";
+    public static final String LEVEL_SPIRIT = "/outside_sprites.png";
 
-    public static BufferedImage loadAnimations(String spiritPath) {
+    public static BufferedImage loadSprite(String spiritPath) {
         InputStream inputStream = LoadSave.class.getResourceAsStream(spiritPath);
         BufferedImage spirit = null;
         try {

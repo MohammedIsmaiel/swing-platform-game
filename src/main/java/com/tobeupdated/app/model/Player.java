@@ -76,7 +76,7 @@ public class Player extends Entity implements Renderable, Updatable {
 
     private void loadAnimations() {
 
-        var playerSprite = LoadSave.loadAnimations(LoadSave.PLAYER_SPIRIT);
+        var playerSprite = LoadSave.loadSprite(LoadSave.PLAYER_SPIRIT);
         animation = new BufferedImage[9][6];
         for (int i = 0; i < animation.length; i++) {
             for (int j = 0; j < animation[i].length; j++) {
