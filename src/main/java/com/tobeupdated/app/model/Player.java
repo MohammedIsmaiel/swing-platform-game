@@ -3,12 +3,14 @@ package com.tobeupdated.app.model;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import com.tobeupdated.app.service.Renderable;
+import com.tobeupdated.app.service.Updatable;
 import com.tobeupdated.app.util.LoadSave;
 
 /**
  * Player
  */
-public class Player extends Entity {
+public class Player extends Entity implements Renderable, Updatable {
 
     private BufferedImage[][] animation;
     private PlayerAction playerAction;
@@ -24,13 +26,14 @@ public class Player extends Entity {
         loadAnimations();
     }
 
+    @Override
     public void update() {
         movePlayer();
         updatePlayerAction();
         runAnimation();
-
     }
 
+    @Override
     public void render(Graphics g) {
         g.drawImage(animation[playerAction.getId()][animationIndex], x, y, 128, 80, null);
     }
