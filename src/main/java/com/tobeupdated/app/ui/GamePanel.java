@@ -14,7 +14,7 @@ public class GamePanel extends JPanel {
     private Player player;
 
     public GamePanel() {
-        panelDimension = new Dimension(1280, 800);
+        panelDimension = new Dimension(Game.GAME_WIDTH, Game.GAME_HEIGHT);
         player = new Player(100, 100);
         setMaximumSize(panelDimension);
         setMinimumSize(panelDimension);

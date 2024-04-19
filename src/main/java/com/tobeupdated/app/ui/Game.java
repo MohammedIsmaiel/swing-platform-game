@@ -4,9 +4,14 @@ import java.awt.Graphics;
 
 import javax.swing.Timer;
 
-import com.tobeupdated.app.model.Player;
-
 public class Game {
+    public final static int TILES_DEFAULT_SIZE = 32;
+    public final static float SCALE = 1.5f;
+    public final static int TILES_WIDTH_NUMBER = 26;
+    public final static int TILES_HEIGHT_NUMBER = 14;
+    public final static int TILES_SIZE = (int) (TILES_DEFAULT_SIZE * SCALE);
+    public final static int GAME_WIDTH = TILES_SIZE * TILES_WIDTH_NUMBER;
+    public final static int GAME_HEIGHT = TILES_SIZE * TILES_HEIGHT_NUMBER;
     private GamePanel gamePanel;
     private Timer timer;
     private final int FPS = 60;
