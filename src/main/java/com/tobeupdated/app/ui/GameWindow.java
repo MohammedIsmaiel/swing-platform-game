@@ -11,8 +11,9 @@ public class GameWindow {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.add(panel);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.pack();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         frame.addWindowFocusListener(new WindowFocusListener() {
             @Override
